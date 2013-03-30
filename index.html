@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Scala Basics by vivekagr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="without-description">
+        <h1>Scala Basics</h1>
+        <p></p>
+        <p class="view"><a href="https://github.com/vivekagr">View the Project on GitHub <small>vivekagr</small></a></p>
+        <ul>
+          <li class="single"><a href="">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Imperative Programming is about</p>
+
+<ul>
+<li>modifying mutable variables,</li>
+<li>using assignments</li>
+<li>and control structures such as if-then-else, loops, breaks, continue, return.</li>
+</ul><p>Pure imperative programming is limited by the “Von Neumann” bottleneck:</p>
+
+<blockquote>
+<p>One tends to conceptualize data structures word-by-word.</p>
+</blockquote>
+
+<p>We need other techniques for deﬁning high-level abstractions such as collections, polynomials, geometric shapes, strings, documents.</p>
+
+<p>A theory consists of one or more data types, operation on these data types and laws that describe the relationship between values and operations.</p>
+
+<p>Normally, a theory doesn't describes mutations!</p>
+
+<p>Functional Programming is about</p>
+
+<ul>
+<li>In a restricted sense, it means programming without mutable variables, assignments, loops and other imperative control stuctures.</li>
+<li>In a wider sense, functional programming means focusing on the functions to construct elegant programs.</li>
+<li>In particular, functions can be values that are produced, consumed and composed.</li>
+<li>Functions are first class citizens. They can be defined anywhere, including inside other functions.</li>
+<li>Functions like any other value, passed as parameter to functions and returned as results. As for other values, there exists a set operators to compose
+functions.</li>
+</ul><p>Functional Programming is becoming increasingly popular because it oﬀers an attractive method for exploiting parallelism for multicore and cloud computing.</p>
+
+<p>In a parallel environment, when multiple threads try to access and mutate a shared mutable state, problems arises. Though there are ways to solve it, it is not always easy and elegant as desired. In functional programming, by eliminating the use of mutable states these problems can be easily solved.</p>
+
+<p>Functions can be defined as:</p>
+
+<pre><code>::scala
+def square(x: Double) = x * x
+
+def sumOfSquares(x: Double, y: Double) = square(x) + square(y)
+
+/* Here, the return type is defined as well. */
+def power(x: Double, y: Int): Double = ...
+</code></pre>
+
+<p><strong>Call by value (CBV)</strong> - All the arguments are evaluated to a simple value and then passed on to the function body as soon as the function is ran.</p>
+
+<p>Example:</p>
+
+<pre><code>::scala
+def example(x: Int, y: Int) = x * x
+
+example(2+3, 7)
+
+/*
+Evaluated as-
+example(2+3, 7) -&gt; example(5, 7) -&gt; 5 * 5 -&gt; 25
+*/
+</code></pre>
+
+<p><strong>Call by name (CBN)</strong> - All the arguments are passed to the function body as it is and evaluation is done by the code within the function body.</p>
+
+<p>Example:</p>
+
+<pre><code>::scala
+example(2+3, 7)
+
+/*
+ * Evaluated as-
+ * example(2+3, 7) -&gt; (2+3) * (2+3) -&gt; 5 * (2+3) -&gt; 5 * 5 -&gt; 25
+ */
+</code></pre>
+
+<p>If CBV evaluation of an expression <em>e</em> terminates, then CBN evaluation of <em>e</em> terminates too.</p>
+
+<p>The other direction is not true.</p>
+
+<p>Non-termination example</p>
+
+<pre><code>::scala
+def first(x: Int, y: Int) = x
+
+first(1, loop)
+
+/*
+ * Here, the loop resolves to itself infinitely.
+ * 
+ * Under CBN:
+ * first(1, loop) -&gt; 1
+ * 
+ * Under CBV:
+ * first(1, loop) -&gt; first(1, loop) -&gt; first(1, loop)....
+ */
+</code></pre>
+
+<p>Scala normally uses call-by-value.</p>
+
+<p>But if the type of a function parameter starts with =&gt;, it uses call-by-name.</p>
+
+<pre><code>::scala
+def consOne(x: Int, y: =&gt; Int) = 1
+
+/* Here, x is evaluated as CBV by default and y is evaluated as CBN which we explicitly forced it to. */
+</code></pre>
+
+<p><strong>Conditional Expressions</strong></p>
+
+<p>if-else in Scala is used for expressions, not statements.</p>
+
+<pre><code>::scala
+def abs(x: Int) = if (x &gt;= 0) x else -x
+</code></pre>
+
+<p>Rewrite rules for Booleans (e is an arbitrary expression):</p>
+
+<pre><code>::scala
+/* !true        --&gt; false
+ * !false       --&gt; true
+ * true &amp;&amp; e    --&gt; e
+ * false &amp;&amp; e   --&gt; false
+ * true || e    --&gt; true
+ * false || e   --&gt; e
+ */
+</code></pre>
+
+<p><strong>Value Definitions</strong></p>
+
+<p>The <code>def</code> form is "by name", its right hand side evaluated on each use.</p>
+
+<p>There is also a <code>val</code> for, which is "by value". Example-</p>
+
+<pre><code>::scala
+val x = 2
+val y = square(x)
+</code></pre>
+
+<p>The right hand side of a val definition is evaluated at the point of the definition itself.</p>
+
+<p>Afterwards the name refers to the value. Here y refers to 4, not square(2).</p>
+
+<p><strong>Difference between val and def</strong></p>
+
+<p>The difference becomes apparent when the right hand side does not terminate.</p>
+
+<pre><code>::scala
+/* This works fine. */
+def loop: Boolean = loop
+def x = loop
+
+/* However, this will get stuck in an infinite loop since the interpreter tries to evaluate the loop right at the point of definition. */
+val x = loop
+</code></pre>
+
+<p>&amp;&amp; and || implementation as functions-</p>
+
+<pre><code>::scala
+def and(x: Boolean, y: =&gt; Boolean) = if (x) y else false
+def or(x: Boolean, y: =&gt; Boolean) = if (!x) y else true
+</code></pre>
+
+<p><strong>Return type is required when calling a function recursively.</strong></p>
+
+<p><strong>Blocks in Scala</strong></p>
+
+<p>A block is defined by curly braces {....}.</p>
+
+<pre><code>::scala
+{
+    val x = f(3)
+    x * x
+}
+</code></pre>
+
+<p>It constains a sequence of definition or expressions.
+The last element of a block is an expression that deﬁnes its value.
+This return expression can be preceded by auxiliary deﬁnitions.
+Blocks are themselves expressions; a block may appear everywhere an expression can.</p>
+
+<ul>
+<li>The deﬁnitions inside a block are only visible from within the block.</li>
+<li>The deﬁnitions inside a block shadow deﬁnitions of the same names outside the block.</li>
+</ul><p><strong>Semicolons</strong></p>
+
+<p>In Scala, semicolons at the end of a line is optional in most cases. If there are more than one statements in one line, then they need to be separatd with a semi-colon.</p>
+
+<p><strong>Semicolons and inﬁx operators</strong></p>
+
+<p>One issue with Scala’s semicolon convention is how to write expressions that span several lines. For instance-</p>
+
+<pre><code>::scala
+someLongExpression
++ someOtherExpression
+
+/* would be interpreted as */
+
+someLongExpression;
++ someOtherExpression
+</code></pre>
+
+<p>Two ways to overcome the problem.</p>
+
+<pre><code>::scala
+/* Multiline expression can be written inside parentheses. */
+(someLongExpression
+    + someOtherExpression)
+
+/* Or operator can be written on the first line because this tells the Scala compiler that the expression is not yet finished. */
+someLongExpression +
+someOtherExpression
+</code></pre>
+
+<p><strong>Tail Recursion</strong></p>
+
+<p>If a function calls itself as its last action, the function's stack frame can be reused. This is called tail recursion. Tail recursive functions are iterative processes.</p>
+
+<p>In general, if the last action of a function consists of calling a function (which may be the same), one stack frame would be suﬃcient for both functions. Such calls are called tail-calls.</p>
+
+<p>Example of non-tail recursive factorial function:</p>
+
+<pre><code>::scala
+def factorial(x: Int): Int = 
+    if (x == 0) 1
+    else x * factorial(x-1)
+</code></pre>
+
+<p>Example of tail recursive factorial function:</p>
+
+<pre><code>::scala
+def factorial(x: Int) = 
+    def fac_loop(accum: Int, n: Int): Int = 
+        if (n == 0) accum
+        else fac_loop(accum * n, n - 1)
+    loop(1, x)
+</code></pre>
+
+<p>In the first example, the return value <code>x * factorial(x-1)</code> has a pending calculation of x multiplied by factorial of (x-1) which would have to wait until that factorial has been computed and thus that recursive chain keeps on growing.</p>
+
+<p>However, in the second example, for the return value <code>fac_loop(accum * n, n - 1)</code> the function calls itself and there are no pending computation to be done, so the further function calls can take place in the same stack frame without growing like crazy like in the previous example.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
