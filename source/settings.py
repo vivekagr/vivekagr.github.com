@@ -23,7 +23,7 @@ author = {
     'default': 'vivekagr',
     'vars': {
         'vivekagr': {
-            'name': 'Vivek agarwal',
+            'name': 'Vivek Agarwal',
             'website': 'http://vivek.im',
             'email': 'me@vivek.im',
         }
@@ -60,7 +60,7 @@ writer = {
 
 #: theme variables
 theme = {
-    'name': 'moment',
+    'name': 'default',
     'vars': {
         # 'disqus': 'your_short_name',
         # 'analytics': 'UA-21475122-1',

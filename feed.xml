@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>vivek logs</title>
-    <link href="http://vivek.im/feed.xml" rel="self" />
+    <title>vivek agarwal</title>
+    <link href="http://vivek.im/feed" rel="self" />
     <link href="http://vivek.im/" />
-    <updated>2013-04-03T07:02:08+05:30</updated>
+    <updated>2013-04-06T11:08:40+05:30</updated>
     <id>http://vivek.im/</id>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
-        <author><name>vivekagr</name></author>
-        <link href="http://vivek.im/2013/hello-world.html"/>
+        <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
+        <link href="http://vivek.im/2013/hello-world"/>
         <published>2013-04-03T00:00:00+05:30</published>
-        <updated>2013-04-03T07:02:08+05:30</updated>
-        <id>http://vivek.im/2013/hello-world.html</id>
+        <updated>2013-04-06T11:08:40+05:30</updated>
+        <id>http://vivek.im/2013/hello-world</id>
         <category scheme="http://vivek.im/tag/blogging/" term="blogging" label="blogging" />
         <content type="html" xml:base="http://vivek.im" xml:lang="en">
-            <![CDATA[ <p>So, I finally decided to start blogging. The obvious solution was to use Wordpress as I have in the past for other sites. But I wanted to try something else this time. Github Pages for free hosting was very enticing but that can only serve static files which meant I had to use static blog generator.</p>
+            <![CDATA[ <p>So, I finally decided to start blogging. The obvious solution was to use Wordpress as I have in the past for other sites. But I wanted to try something else this time. Github Pages for free hosting was very enticing but that can only serve static files which meant I had to use a static blog generator.</p>
 <p><a href="https://github.com/mojombo/jekyll">Jekyll</a> is kind of popular these days with a lot of features. But it&#39;s written in Ruby (which I don&#39;t know at this point) and I&#39;m a Python guy, so I looked for other options so that I can easily modify the code to suit my needs. <a href="https://github.com/getpelican/pelican">Pelican</a> seemed good and to try it out, I started porting my Scala notes from Evernote to markdown format. I had a few questions and Justin was out there on freenode at #pelican to assist me. It was all good, until I discovered <a href="http://nikola.ralsina.com.ar/">Nikola</a> which seemed much better and simple than Pelican. It also supported markdown format so I had change basically nothing to try out my notes on Nikola. There were many themes to choose from and it looked wonderful. But there was no category support in Nikola. Sigh, I had to start looking for something else.</p>
 <p>Fast forward a few days, I stumbled upon <a href="http://tshepang.net/favorite-pelican-themes">this post</a> while searching for themes for Pelican and Nikola. But his blog was using something else and it was looking very good. It was <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> (in case you don&#39;t know, the <a href="http://harrypotter.wikia.com/wiki/Felix_Felicis">term</a> is from Harry Potter universe which means liquid luck potion). I had found the perfect static blog generator I was looking for. Setting it up was quick since it is not cluttered with too many useless features, straight to the point and also supports markdown format for posts.</p>
-<p>The domain was hosted on a shared Hostgator account with MX entries for Google apps. To use this domain with Github, I made an A record pointing to the IP address provided by Github and make the MX entries again on the domain registrar&#39;s end (since I wanted to get rid of dependency on Hostgator which was useless at this point).</p>
+<p>The domain was hosted on a shared Hostgator account with MX entries for Google apps. To use this domain with Github, I made an A record pointing to the IP address provided by Github and the MX entries (again) on the domain registrar&#39;s end (since I wanted to get rid of dependency on Hostgator which was useless at this point).</p>
 <p>Deciding to go with static blog generator in place of Wordpress sure took much longer than I anticipated but I hope it&#39;ll be worth it in the long run.</p>
 ]]>
         </content>
