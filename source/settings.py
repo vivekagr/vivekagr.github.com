@@ -62,7 +62,7 @@ writer = {
 theme = {
     'name': 'default',
     'vars': {
-        # 'disqus': 'your_short_name',
+        'disqus': 'vivekagr',
         # 'analytics': 'UA-21475122-1',
         'allow_comment_on_secret_post': True,
 
