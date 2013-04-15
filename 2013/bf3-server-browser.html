@@ -1,21 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <title>vivek agarwal</title>
-    <link href="http://vivek.im/feed" rel="self" />
-    <link href="http://vivek.im/" />
-    <updated>2013-04-15T11:51:45+05:30</updated>
-    <id>http://vivek.im/</id>
-    <entry>
-        <title type="html"><![CDATA[About BF3 Server Browser I wrote]]></title>
-        <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
-        <link href="http://vivek.im/2013/bf3-server-browser"/>
-        <published>2013-04-15T00:00:00+05:30</published>
-        <updated>2013-04-15T11:51:45+05:30</updated>
-        <id>http://vivek.im/2013/bf3-server-browser</id>
-        <category scheme="http://vivek.im/tag/games/" term="games" label="games" />
-        <category scheme="http://vivek.im/tag/python/" term="python" label="python" />
-        <content type="html" xml:base="http://vivek.im" xml:lang="en">
-            <![CDATA[ <p>Recently I wrote a <a class="reference external" href="https://github.com/vivekagr/bf3sb">Battlefield 3 server browser application</a> in Python. With over <a class="reference external" href="http://battlelog.battlefield.com/bf3/soldier/mpheus/stats/372749077/">330 hours logged</a> in Battlefield 3, I think its fair to say that I play it a lot (though not much since I found programming to be more fun). I'm on a 512kbps connection with the country's worst ISP so I always have to look for servers with lowest ping time. Half of the times, I'm unable to play and keep getting either timed out or kicked out of servers for having high ping. And being on a slow connections creates another problem. Battlefield 3's web browser based server browser takes too long (10-30 seconds) to load and then the ping function isn't called for some reason. So, I always had to copy the server IP addresses and manually ping them via command prompt.</p>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>About BF3 Server Browser I wrote - vivek agarwal</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=af9b9" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed" title="vivek agarwal" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2013/bf3-server-browser" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">vivek agarwal</a></h1>
+            <nav id="nav" role="navigation">
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">About BF3 Server Browser I wrote</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-04-15T00:00:00+05:30" pubdate>
+            <a href="/2013/">2013-04-15</a>
+        </time>
+        <span class="author vcard">
+            by <a class="url fn" href="http://vivek.im">Vivek Agarwal</a>
+            
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>Recently I wrote a <a class="reference external" href="https://github.com/vivekagr/bf3sb">Battlefield 3 server browser application</a> in Python. With over <a class="reference external" href="http://battlelog.battlefield.com/bf3/soldier/mpheus/stats/372749077/">330 hours logged</a> in Battlefield 3, I think its fair to say that I play it a lot (though not much since I found programming to be more fun). I'm on a 512kbps connection with the country's worst ISP so I always have to look for servers with lowest ping time. Half of the times, I'm unable to play and keep getting either timed out or kicked out of servers for having high ping. And being on a slow connections creates another problem. Battlefield 3's web browser based server browser takes too long (10-30 seconds) to load and then the ping function isn't called for some reason. So, I always had to copy the server IP addresses and manually ping them via command prompt.</p>
 <p>I started learning Python in January 2013, so I thought of using my newly acquired skills to do myself some good. I tried implementing the ping function with the help of <a class="reference external" href="http://docs.python.org/2/library/subprocess.html">subprocess</a> module. But routing each request via different processes and parsing out the result was very slow and inefficient. I looked for pure ping implementation in Python but couldn't find any and eventually forgot about this idea. After a couple of weeks, I came across <a class="reference external" href="https://gist.github.com/pklaus/856268">this gist</a> and began working on the project. First, I made a <a class="reference external" href="https://github.com/mitsuhiko/flask">Flask</a> based interface over the core functions and it worked well. But running the python script each time over the cmd felt cumbersome (even more so on Windows). Then I remembered getting a Python GUI development course coupon on <a class="reference external" href="http://redd.it/14453f">this reddit thread</a> months ago. Bogdan Milanovich gave away <a class="reference external" href="https://www.udemy.com/python-gui-programming">his course</a> for free. I started going through the videos and then worked on making the GUI. The course videos were fantastic.</p>
 <p><a class="reference external" href="http://qt-project.org/wiki/Category:LanguageBindings::PySide">PySide</a> (Python bindings to the Qt framework) was used during the course. There also exists <a class="reference external" href="http://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a> which is more mature than PySide and similar to it. The major difference being the license, PySide is under LGPL and PyQt under GPL (discussed in-depth <a class="reference external" href="http://www.devilsan.com/1/post/2013/01/choosing-between-pyside-or-pyqt-license-consideration.html">here</a>). I didn't spend time choosing one between the two and just went with the course's choice. Qt Designer (part of Qt Creator) is an amazing tool to quickly design the GUI which can then be used in any language which has bindings for Qt. I could have used it to ease the process and just incorporated it with previously written core part, but I chose to code everything by hand. Having recently learned Python, I wanted to write as much as I could in it and also, I wanted to get familiar with Qt. Even though PySide is not that mature and parts of it's documentation are incomplete, it wasn't that hard to find the answers. For most of the queries, I got back the answer for PyQt and C++ versions, but since the classes and methods are very similarly named, it was not a problem. This <a class="reference external" href="http://www.codinguser.com/2012/07/i-miss-qt-or-what-cute-documentation-looks-like/">blog post</a> praises About and describes why Qt rocks. I also tried TkInter and wxPython GUI frameworks but PySide felt much better than both of these.</p>
 <p>For showing the results, I used the Jinja2 template I earlier made for the Flask based interface. I couldn't find any good way to show the result within the application itself. Using the table widgets provided by Qt wasn't good enough. Also, one would still need to open browser to join the game server. So why not just show the result in the browser itself and reduce the distance between the result page and server join page.</p>
@@ -23,23 +47,45 @@
 <p>And just to make it a complete package, I used <a class="reference external" href="http://www.jrsoftware.org/isinfo.php">Inno Setup</a> to make the installer. Finally, to distribute the binaries I uploaded them to SourceForge.net. I really wish Github had the option to upload binaries. Well they had but <a class="reference external" href="https://github.com/blog/1302-goodbye-uploads">it was deprecated</a>. I hope it comes back in future.</p>
 <p>One thing I learned is that it takes more effort to design the user interface than to build the core part of a software. Actually I learned many other things too while making this. It can scrape data for and ping 500 servers under a minute on my sluggish connection. I don't think anyone uses it except myself and one of my friend but still I'm incredibly proud of it.</p>
 <p>Source and download links are available at - <a class="reference external" href="https://github.com/vivekagr/bf3sb">https://github.com/vivekagr/bf3sb</a></p>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[Hello World]]></title>
-        <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
-        <link href="http://vivek.im/2013/hello-world"/>
-        <published>2013-04-03T00:00:00+05:30</published>
-        <updated>2013-04-08T15:51:05+05:30</updated>
-        <id>http://vivek.im/2013/hello-world</id>
-        <category scheme="http://vivek.im/tag/blogging/" term="blogging" label="blogging" />
-        <content type="html" xml:base="http://vivek.im" xml:lang="en">
-            <![CDATA[ <p>So, I finally decided to start blogging. The obvious solution was to use Wordpress as I have in the past for other sites. But I wanted to try something else this time. Github Pages for free hosting was very enticing but that can only serve static files which meant I had to use a static blog generator.</p>
-<p><a href="https://github.com/mojombo/jekyll">Jekyll</a> is kind of popular these days with a lot of features. But it&#39;s written in Ruby (which I don&#39;t know at this point) and I&#39;m a Python guy, so I looked for other options so that I can easily modify the code to suit my needs. <a href="https://github.com/getpelican/pelican">Pelican</a> seemed good and to try it out, I started porting my Scala notes from Evernote to markdown format. I had a few questions and Justin was out there on freenode at #pelican to assist me. It was all good, until I discovered <a href="http://nikola.ralsina.com.ar/">Nikola</a> which seemed much better and simple than Pelican. It also supported markdown format so I had to change basically nothing to try out my notes on Nikola. There were many themes to choose from and it looked wonderful. But there was no category support in Nikola. Sigh, I had to start looking for something else.</p>
-<p>Fast forward a few days, I stumbled upon <a href="http://tshepang.net/favorite-pelican-themes">this post</a> while searching for themes for Pelican and Nikola. But his blog was using something else and it was looking very good. It was <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> (in case you don&#39;t know, the <a href="http://harrypotter.wikia.com/wiki/Felix_Felicis">term</a> is from Harry Potter universe which means liquid luck potion). I had found the perfect static blog generator I was looking for. Setting it up was quick since it is not cluttered with too many useless features, straight to the point and also supports markdown format for posts.</p>
-<p>The domain was hosted on a shared Hostgator account with MX entries for Google apps. To use this domain with Github, I made an A record pointing to the IP address provided by Github and the MX entries (again) on the domain registrar&#39;s end (since I wanted to get rid of dependency on Hostgator which was useless at this point).</p>
-<p>Deciding to go with static blog generator in place of Wordpress sure took much longer than I anticipated but I hope it&#39;ll be worth it in the long run.</p>
-]]>
-        </content>
-    </entry>
-</feed>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/games/">games</a><a href="/tag/python/">python</a>
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'vivekagr';
+        var disqus_title = 'About BF3 Server Browser I wrote';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            <nav class="elsewhere">
+                <a href="https://github.com/vivekagr">GitHub</a><a href="mailto:me@vivek.im">Contact</a>
+            </nav>
+            <p class="copyright">
+            <span class="software">
+                Powered by <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> 3.8,
+            </span>
+            <span class="theme">
+                Theme <a href="https://github.com/lepture/liquidluck-theme-moment" rel="nofollow">moment</a> 1.0 by <a href="http://lepture.com">Hsiaoming Yang</a>
+            </span>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=3b6df"></script>
+        
+    </body>
+</html>

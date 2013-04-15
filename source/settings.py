@@ -34,7 +34,7 @@ author = {
 reader = {
     'active': [
         'liquidluck.readers.markdown.MarkdownReader',
-        # 'liquidluck.readers.restructuredtext.RestructuredTextReader',
+        'liquidluck.readers.restructuredtext.RestructuredTextReader',
     ],
 }
 
@@ -63,7 +63,7 @@ theme = {
     'name': 'default',
     'vars': {
         'disqus': 'vivekagr',
-        # 'analytics': 'UA-21475122-1',
+        # 'analytics': '',
         'allow_comment_on_secret_post': True,
 
         'navigation': [
@@ -74,10 +74,5 @@ theme = {
             {'name': 'GitHub', 'link': 'https://github.com/vivekagr'},
             {'name': 'Contact', 'link': 'mailto:me@vivek.im'},
         ],
-
-        'descriptions': {
-            'life': u'生命是一襲華美的袍，爬滿了虱子 －－ 張愛玲',
-            'work': 'works in python, javascript, vim, and everything else'
-        },
     }
 }
