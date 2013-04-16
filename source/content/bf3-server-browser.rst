@@ -17,7 +17,7 @@ For freezing a python script into a standalone executable, there are quite a few
 
 And just to make it a complete package, I used `Inno Setup`_ to make the installer. Finally, to distribute the binaries I uploaded them to SourceForge.net. I really wish Github had the option to upload binaries. Well they had but `it was deprecated`_. I hope it comes back in future.
 
-One thing I learned is that it takes more effort to design the user interface than to build the core part of a software. Actually I learned many other things too while making this. It can scrape data for and ping 500 servers under a minute on my sluggish connection. I don't think anyone uses it except myself and one of my friend but still I'm incredibly proud of it.
+One thing I learned is that it takes more effort to design the user interface than to build the core part of a software. Actually I learned many other things too while making this. It can scrape data for and ping 500 servers under a minute on my sluggish connection. I don't think anyone uses it except myself and a friend of mine but still I'm incredibly proud of it.
 
 Source and download links are available at - https://github.com/vivekagr/bf3sb
 
