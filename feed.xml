@@ -3,9 +3,38 @@
     <title>vivek agarwal</title>
     <link href="http://vivek.im/feed" rel="self" />
     <link href="http://vivek.im/" />
-    <updated>2013-04-15T18:08:04+05:30</updated>
+    <updated>2013-08-04T06:44:20+05:30</updated>
     <id>http://vivek.im/</id>
     <entry>
+        <title type="html"><![CDATA[My take on Ghost in the Shell]]></title>
+        <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
+        <link href="http://vivek.im/2013/ghost-in-the-shell"/>
+        <published>2013-08-04T00:00:00+05:30</published>
+        <updated>2013-08-04T06:44:20+05:30</updated>
+        <id>http://vivek.im/2013/ghost-in-the-shell</id>
+        <category scheme="http://vivek.im/tag/anime/" term="anime" label="anime" />
+        <category scheme="http://vivek.im/tag/philosophy/" term="philosophy" label="philosophy" />
+        <category scheme="http://vivek.im/tag/gits/" term="GitS" label="GitS" />
+        <content type="html" xml:base="http://vivek.im" xml:lang="en">
+            <![CDATA[ <p>Today I saw <a class="reference external" href="http://www.imdb.com/title/tt0113568/">Ghost in the Shell</a> movie and I have to say that it is one of the greatest piece of art I've ever encountered. I've also seen 10 (of total 26) episodes of <a class="reference external" href="https://en.wikipedia.org/wiki/Ghost_in_the_Shell:_Stand_Alone_Complex">Ghost in the Shell - Stand Alone Complex</a>. The movie is set during 2029 in futuristic Japan. Human augmentation is possible, human brain can directly interface with computers and yes, it can be hacked as well. Although I think this will take a bit longer to achieve in our reality, everything thing else in the movie seems very realistic. The plot was a bit unclear to me due to watching with English subtitles and also being unable to retain Japanese character names in my head. At the center of the series is <a class="reference external" href="http://ghostintheshell.wikia.com/wiki/Public_Security_Section_9_(organization)">Section 9</a>, a top secret division of Japanese government that deals with espionage, terrorism and other high profile incidents. The main character <a class="reference external" href="http://ghostintheshell.wikia.com/wiki/Motoko_Kusanagi">Major Motoko Kusanagi</a> who is a cyborg, leads the team. Some team members are completely cyborg like her while some are mostly human.</p>
+<p>The series throws a lot of philosophical questions at you. One of biggest being related to <a class="reference external" href="https://en.wikipedia.org/wiki/Ship_of_Theseus">Theseus's paradox</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Sorites_paradox">Sorites paradox</a>. Theseus's paradox questions whether an object which has had all its components replaced remains fundamentally the same object. Regarding Sorites paradox, I will quote Wikipedia:</p>
+<blockquote>
+A typical formulation involves a heap of sand, from which grains are individually removed. Under the assumption that removing a single grain does not turn a heap into a non-heap, the paradox is to consider what happens when the process is repeated enough times: is a single remaining grain still a heap? (Or are even no grains at all a heap?) If not, when did it change from a heap to a non-heap?</blockquote>
+<p>Ghost in the Shell asks the very same question. Cells in our body wither away and new ones replace them. What if each part of our body is gradually replaced by its cybernetic counterpart? When even the brain is replaced but contains all the previous data? We need to define how we are going to compare these two states. In my opinion, a person is defined by his thoughts and not his body. Body is nothing more than a chassis that houses the brain. Yes, physical body is a part of one's identity just like a person's name, sexuality, nationality, etc. And of course, the body needs to be takes care of if the brain is to survive. An infant is no longer the same physically when he turns into an adult. Much of his body cells are replaced and is grown up with 'foreign' material (food). In the above scenario with cyborg body containing same brain data, it can be said that they are both completely same person. But a real transformation happens when a person's thoughts change, no matter what the physical form is. During the movie's ending, Motoko and an artificial consciousness character <a class="reference external" href="https://en.wikipedia.org/wiki/Puppet_Master_(Ghost_in_the_Shell)#Puppeteer.2FPuppet_Master">Puppet Master</a> merge their minds (essentially databases) together and the end result is the change in Motoko's character.</p>
+<img alt="/static/gits/1.jpg" src="/static/gits/1.jpg" />
+<p>The next question being the difference between human and artificial consciousness. The artificial consciousness character <cite>Puppet Master</cite> in the movie, on being said that <cite>it</cite> is merely a program designed to self-preserve, replies-</p>
+<blockquote>
+It can also be argued that your DNA is nothing more than a program designed to preserve itself. Life is like a nodal point born in a overwhelming sea of information.</blockquote>
+<p>The point <cite>he</cite> just made is pretty solid. We like to believe that there is something super-natural that sets us apart from anything that is non-flesh-n-blood. And yes, I'm using <cite>he</cite> even though he is not an organic being. Even out of the that context, it being just a character in a movie, I will continue to use the same term.</p>
+<p><a class="reference external" href="http://www.simulation-argument.com/">We can't even be sure whether we are living in a simulation.</a> Even if we are, it wouldn't make much difference to me. I would like to quote <a class="reference external" href="https://en.wikipedia.org/wiki/Agent_Smith">Agent Smith</a> from <a class="reference external" href="https://en.wikipedia.org/wiki/The_Matrix">The Matrix</a> -</p>
+<blockquote>
+Illusions, Mr. Anderson. Vagaries of perception. The temporary constructs of a feeble human intellect trying desperately to justify an existence that is without meaning or purpose.</blockquote>
+<p>One thing that irked me about GitS series was the usage of the term <a class="reference external" href="http://ghostintheshell.wikia.com/wiki/Ghosts_&amp;_Shells">Ghost</a> in it. I think it means (in movie's context) an individual's personality, identity and even what is called soul. On many occasions, it was shown as some super-natural power. I disliked how the ones without ghosts were discriminated against for something that can be theoretically easily provided.</p>
+<p>Ghost in the Shell was so thought provoking that it made me spill my thoughts onto here. Though there doesn't goes a day without me pondering on the same subject.</p>
+<img alt="/static/gits/2.jpg" src="/static/gits/2.jpg" />
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[About BF3 Server Browser I wrote]]></title>
         <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
         <link href="http://vivek.im/2013/bf3-server-browser"/>
