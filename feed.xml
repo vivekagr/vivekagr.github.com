@@ -3,9 +3,66 @@
     <title>vivek agarwal</title>
     <link href="http://vivek.im/feed" rel="self" />
     <link href="http://vivek.im/" />
-    <updated>2013-09-01T05:25:28+05:30</updated>
+    <updated>2013-10-19T10:35:29+05:30</updated>
     <id>http://vivek.im/</id>
     <entry>
+        <title type="html"><![CDATA[Querying Google Analytics in Python]]></title>
+        <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
+        <link href="http://vivek.im/2013/google-analytics-python"/>
+        <published>2013-10-19T00:00:00+05:30</published>
+        <updated>2013-10-19T10:35:29+05:30</updated>
+        <id>http://vivek.im/2013/google-analytics-python</id>
+        <category scheme="http://vivek.im/tag/python/" term="python" label="python" />
+        <content type="html" xml:base="http://vivek.im" xml:lang="en">
+            <![CDATA[ <p>I was implementing admin panel for a site and wanted to show the visitors count from Google Analytics but was soon frustrated to find that there was no simple way. Found out <a class="reference external" href="http://www.julianbez.com/blog/2013/05/31/query-google-analytics-api-with-a-service-account-in-python/">this</a> post describing the process but it missed out many parts that I had to figure out myself. So, I'm writing this in hope that somebody will find it useful.</p>
+<p>First of all you need to get a service account which will let you have a private key with which you can make the queries.</p>
+<ul class="simple">
+<li>Visit <a class="reference external" href="https://cloud.google.com/console">Google Cloud Console</a> and create a new project if you don't already have one.</li>
+<li>Then select the project and go to <tt class="docutils literal">APIs &amp; auth</tt> &gt; <tt class="docutils literal">Registered apps</tt> on the left.</li>
+<li>Click on <tt class="docutils literal">Register App</tt>, choose whatever name you wish and <tt class="docutils literal">Web Application</tt> as platform.</li>
+<li>On the next page, open <tt class="docutils literal">Certificate</tt> panel, click on <tt class="docutils literal">Generate Certificate</tt>, download the presented private key and note the password.</li>
+<li>Under the <tt class="docutils literal">Certificate</tt> panel, an email address should have appeared. Note it.</li>
+</ul>
+<p>You need to give read access to the above email address in your analytics account.</p>
+<ul class="simple">
+<li>In Google Analytics, open the site's reporting section and click on <tt class="docutils literal">Admin</tt> link on top-right.</li>
+<li>Under <tt class="docutils literal">User Management</tt>, add <tt class="docutils literal">Read &amp; Analyze</tt> permissions for the email address you noted previously.</li>
+</ul>
+<p>You also need profile id of your Google Analytics account. Click on home icon and you should see a string like <tt class="docutils literal">a9437494161w8843423p4789324</tt>. The number part after <tt class="docutils literal">p</tt> in it is your profile id (<tt class="docutils literal">4789324</tt> here). I couldn't find any more quicker and cleaner way to find it. Note it as well.</p>
+<p>In Python, you need <tt class="docutils literal">oauth2client</tt> and <tt class="docutils literal"><span class="pre">google-api-python-client</span></tt> packages installed. Here is a sample python script with which you can query a few metrics.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">apiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">oauth2client.client</span> <span class="kn">import</span> <span class="n">SignedJwtAssertionCredentials</span>
+<span class="kn">import</span> <span class="nn">httplib2</span>
+
+<span class="k">def</span> <span class="nf">get_analytics_visitors</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">file</span><span class="p">(</span><span class="s">&#39;privatekey.p12&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="c"># EDIT THIS</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">SignedJwtAssertionCredentials</span><span class="p">(</span><span class="s">&#39;replace_this@developer.gserviceaccount.com&#39;</span><span class="p">,</span> <span class="c"># EDIT THIS</span>
+                                                <span class="n">key</span><span class="p">,</span>
+                                                <span class="n">scope</span><span class="o">=</span><span class="s">&#39;https://www.googleapis.com/auth/analytics.readonly&#39;</span><span class="p">)</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">()</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">http</span><span class="p">)</span>
+    <span class="n">service</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s">&#39;analytics&#39;</span><span class="p">,</span> <span class="s">&#39;v3&#39;</span><span class="p">,</span> <span class="n">http</span><span class="o">=</span><span class="n">http</span><span class="p">)</span>
+    <span class="n">data_query</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="o">.</span><span class="n">ga</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
+        <span class="s">&#39;ids&#39;</span><span class="p">:</span> <span class="s">&#39;ga:YOUR_PROFILE_ID&#39;</span><span class="p">,</span> <span class="c"># EDIT THIS</span>
+        <span class="s">&#39;metrics&#39;</span><span class="p">:</span> <span class="s">&#39;ga:visits,ga:visitors,ga:newVisits,ga:pageviews,ga:uniquePageviews,ga:visitBounceRate&#39;</span><span class="p">,</span>
+        <span class="s">&#39;start_date&#39;</span><span class="p">:</span> <span class="s">&#39;yesterday&#39;</span><span class="p">,</span>
+        <span class="s">&#39;end_date&#39;</span><span class="p">:</span> <span class="s">&#39;yesterday&#39;</span>
+        <span class="p">})</span>
+    <span class="k">return</span> <span class="n">data_query</span><span class="o">.</span><span class="n">execute</span><span class="p">()[</span><span class="s">&#39;totalsForAllResults&#39;</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">get_analytics_visitors</span><span class="p">()</span>
+</pre></div>
+<p>Place the downloaded private key in same directory or set the proper path to it. Set your service account email address and Google Analytics profile id in the script. The script should work.</p>
+<p>If you get <tt class="docutils literal">NotImplementedError: PKCS12 format is not supported by the PyCrpto library. Try converting to a &quot;PEM&quot; (openssl pkcs12 <span class="pre">-in</span> xxxxx.p12 <span class="pre">-nodes</span> <span class="pre">-nocerts</span> &gt; privatekey.pem) or using PyOpenSSL if native code is an option.</tt>, then run <tt class="docutils literal">openssl pkcs12 <span class="pre">-in</span> private.p12 <span class="pre">-nodes</span> <span class="pre">-nocerts</span> &gt; privatekey.pem</tt> in terminal (account for the filenames). Enter the password that was presented when you downloaded the private key. It was most probably 'notasecret'.</p>
+<p>Don't forget to change the private key filename in script to <tt class="docutils literal">privatekey.pem</tt>. If you still get the same error, just remove the header from the PEM file (edit in any text editor), so it begins with <tt class="docutils literal"><span class="pre">-----BEGIN</span> PRIVATE <span class="pre">KEY-----</span></tt> (solution found on <a class="reference external" href="http://stackoverflow.com/questions/17993604/signedjwtassertioncredentials-on-appengine-doesnt-recognize-pem-key">stackoverflow</a>).</p>
+<p>The script should finally work now without any problems.</p>
+<p>Visit <a class="reference external" href="https://developers.google.com/analytics/devguides/reporting/core/dimsmets">https://developers.google.com/analytics/devguides/reporting/core/dimsmets</a> to see all the metrics and dimensions that you can use in your queries and <a class="reference external" href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference">https://developers.google.com/analytics/devguides/reporting/core/v3/reference</a> for core reporting API reference.</p>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[facebook, I give up]]></title>
         <author><name>Vivek Agarwal</name><uri>http://vivek.im</uri></author>
         <link href="http://vivek.im/2013/facebook"/>
